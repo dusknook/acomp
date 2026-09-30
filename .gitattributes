@@ -1,0 +1,22 @@
+# 统一换行：仓库里一律 LF，只有 Windows 批处理留 CRLF。
+# 否则 clone 到 Linux/macOS 后 demo.sh 会因为 CRLF 直接跑不起来。
+* text=auto
+
+*.py    text eol=lf
+*.sh    text eol=lf
+*.yml   text eol=lf
+*.yaml  text eol=lf
+*.toml  text eol=lf
+*.txt   text eol=lf
+*.md    text eol=lf
+LICENSE text eol=lf
+.gitignore text eol=lf
+
+*.bat   text eol=crlf
+*.cmd   text eol=crlf
+
+# 二进制
+*.wav   binary
+*.mp3   binary
+*.png   binary
+*.jpg   binary

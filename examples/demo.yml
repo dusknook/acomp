@@ -1,0 +1,54 @@
+# acomp 示例工程
+#
+# 用法（在本目录执行）：
+#   python ../acomp.py validate demo.yml
+#   python ../acomp.py plan     demo.yml
+#   python ../acomp.py render   demo.yml        # S02 会 FAIL
+#   # 把 S02 的 gain_db 改成 -16.0
+#   python ../acomp.py render   demo.yml        # 全 PASS
+#   python ../acomp.py diff     out/report.json out/report.json
+
+version: 1
+
+project:
+  name: demo
+  out_dir: ./out
+
+audio:
+  sample_rate: 44100
+  channels: 2
+
+measure:
+  silence_threshold_db: -50.0
+
+targets:
+  total_duration: [20.0, 30.0]
+  peak_dbfs: [null, -3.0]
+  rms_dbfs: [-23.0, -18.0]
+  lead_silence: [null, 0.25]
+  trail_silence: [null, 0.25]
+  # 段落级查哪几项（不写则默认 [peak_dbfs, rms_dbfs]）
+  segment_checks: [peak_dbfs, rms_dbfs]
+
+segments:
+  - id: S01
+    src: raw/S01.wav
+    pad_after: 1.0
+    crossfade_next: 0.4
+
+  - id: S02
+    src: raw/S02.wav
+    gain_db: -16.0        # 已修好的值；改回 0.0 就能看到它报 FAIL
+    pad_after: 1.0
+    crossfade_next: 0.4
+
+  - id: S03
+    src: raw/S03.wav
+    pad_after: 0.0
+
+output:
+  master: demo_master.wav
+  mp3:
+    bitrate: 192k
+    sample_rate: 44100
+    joint_stereo: true

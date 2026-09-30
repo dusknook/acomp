@@ -1,0 +1,30 @@
+# 虚拟环境（demo.py 自动创建）
+.venv/
+venv/
+
+# Python 缓存
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# 演示产物（都是可重新生成的：raw 测试音 + 渲染结果）
+examples/raw/
+examples/out/
+examples/_demo_hot.yml
+
+# 批量体检的中间产物
+_gen_*.yml
+tools/_out/
+
+# 测试 / 工具缓存
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

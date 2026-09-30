@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "acomp"
+version = "0.1.0"
+description = "声明式音频后期编译器：把音频状态写成 YAML，把验收结果写成 PASS/FAIL 数字"
+readme = "README.md"
+authors = [{ name = "半日闲" }]
+requires-python = ">=3.10"
+license = { text = "MIT" }
+keywords = ["audio", "ffmpeg", "loudness", "lufs", "true-peak", "yaml", "llm", "agent"]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Multimedia :: Sound/Audio :: Analysis",
+    "Topic :: Multimedia :: Sound/Audio :: Editors",
+]
+dependencies = [
+    "pyyaml>=6.0",
+    "numpy>=1.24",
+    "imageio-ffmpeg>=0.4.9",
+]
+
+[project.optional-dependencies]
+asr = ["faster-whisper>=1.0"]
+dev = ["pytest>=7"]
+
+[project.urls]
+Homepage = "https://github.com/dusknook/acomp"
+Source = "https://github.com/dusknook/acomp"
+Issues = "https://github.com/dusknook/acomp/issues"
+
+[project.scripts]
+acomp = "acomp.cli:main"
+
+[tool.setuptools]
+packages = ["acomp"]
