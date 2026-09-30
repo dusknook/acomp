@@ -19,9 +19,14 @@
 不装任何东西、不需要手动配置 ffmpeg：
 
 ```bash
-git clone https://github.com/dusknook/acomp.git && cd acomp   # 或直接下载源码包解压
+# 国内网络建议用 Gitee 镜像；能直连 GitHub 的用下面的 GitHub 地址，两者内容一致
+git clone https://gitee.com/dusknook/acomp.git  && cd acomp
+git clone https://github.com/dusknook/acomp.git && cd acomp
+
 python demo.py          # Windows 也可以直接双击 demo.bat；macOS/Linux 用 ./demo.sh
 ```
+
+> 不想 clone 也行：直接下载源码包解压，效果一样。
 
 它会自动建 `.venv`、装依赖，然后跑完整个闭环：
 
